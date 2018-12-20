@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const Koa = new express();
 
-// const indexHtml = fs.readFileSync(path.resolve(__dirname, './views/build/index.html'), { encoding: 'utf8' });
+const indexHtml = fs.readFileSync(path.resolve(__dirname, './views/build/index.html'), { encoding: 'utf8' });
 
 mongoose.Promise = global.Promise; // Node의 Promise를 사용하도록 설정
 mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').then(() => {
@@ -18,6 +18,9 @@ mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').t
 });
 
 app.use(serve(path.resolve(__dirname, './views/build')));
+app.use(ctx => {
+  ctx.body = indexHtml;
+});
 
 app.listen(8002, () => {
   console.log('listening to port 8002');
