@@ -6,7 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-const Koa = new express();
+const app = new Koa();
 
 const indexHtml = fs.readFileSync(path.resolve(__dirname, './views/build/index.html'), { encoding: 'utf8' });
 
